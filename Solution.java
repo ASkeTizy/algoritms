@@ -135,9 +135,7 @@ public class Solution {
                             - prArr[l1][l2][l3][l4][l5]
 
             ).append("\n");
-//            https://codeforces.com/edu/course/3/lesson/10/3/practice/contest/324368/problem/B
-//            artiomN
-//                    =XbPe8*6P_:e#.k
+
         }
         System.out.println(str);
 
