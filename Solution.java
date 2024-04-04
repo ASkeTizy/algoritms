@@ -1,10 +1,8 @@
-package org.example.prefixSumCf3;
+//package org.example.prefixSumCf3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
@@ -15,11 +13,10 @@ public class Solution {
         int n3 = Integer.parseInt(s[2]);
         int n4 = Integer.parseInt(s[3]);
         int n5 = Integer.parseInt(s[4]);
-//        Scanner sc = new Scanner(System.in);
-////        int m = sc.nextInt();
+
         long[][][][][] bArr = new long[n1] [ n2] [ n3] [ n4][n5];
         long[][][][][] prArr = new long[n1+1][n2+1][n3+1][n4+1][n5 + 1];
-//        int j = 0;
+
         for (int a = 0; a < n1; a++) {
             for (int b = 0; b < n2; b++) {
                 for (int c = 0; c < n3; c++) {
@@ -91,7 +88,9 @@ public class Solution {
         short r5 = 0;
         StringBuilder str = new StringBuilder();
         String[] cor;
+
         for (int i = 0; i < q; i++) {
+
             cor = bi.readLine().split("\\s");
             l1 = (short) (Short.parseShort(cor[0]) - 1);
             l2 = (short) (Short.parseShort(cor[1]) - 1);
@@ -103,39 +102,49 @@ public class Solution {
             r3 = Short.parseShort(cor[7]);
             r4 = Short.parseShort(cor[8]);
             r5 = Short.parseShort(cor[9]);
+
+//            System.out.println(prArr[l1][l2][l3][l4][l5]+" "+prArr[r1][r2][r3][r4][r5]);
+            long sum = prArr[r1][r2][r3][r4][r5]
+                    - prArr[l1][r2][r3][r4][r5]
+                    - prArr[r1][l2][r3][r4][r5]
+                    - prArr[r1][r2][l3][r4][r5]
+                    - prArr[r1][r2][r3][l4][r5]
+                    - prArr[r1][r2][r3][r4][l5]
+                    + prArr[l1][l2][r3][r4][r5]
+                    + prArr[l1][r2][l3][r4][r5]
+                    + prArr[l1][r2][r3][l4][r5]
+                    + prArr[l1][r2][r3][r4][l5]
+                    + prArr[r1][l2][l3][r4][r5]
+                    + prArr[r1][l2][r3][l4][r5]
+                    + prArr[r1][l2][r3][r4][l5]
+                    + prArr[r1][r2][l3][l4][r5]
+                    + prArr[r1][r2][l3][r4][l5]
+                    + prArr[r1][r2][r3][l4][l5]
+                    - prArr[l1][l2][l3][r4][r5]
+                    - prArr[l1][l2][r3][l4][r5]
+                    - prArr[l1][l2][r3][r4][l5]
+                    - prArr[l1][r2][l3][l4][r5]
+                    - prArr[l1][r2][l3][r4][l5]
+                    - prArr[l1][r2][r3][l4][l5]
+                    - prArr[r1][l2][l3][l4][r5]
+                    - prArr[r1][l2][l3][r4][l5]
+                    - prArr[r1][l2][r4][l4][l5]
+                    - prArr[r1][r2][l3][l4][l5]
+                    + prArr[l1][l2][l3][l4][r5]
+                    + prArr[l1][l2][l3][r4][l5]
+                    + prArr[l1][l2][r3][l4][l5]
+                    + prArr[l1][r2][l3][l4][l5]
+                    + prArr[r1][l2][l3][l4][l5]
+                    - prArr[l1][l2][l3][l4][l5];
             str.append(
-                    prArr[r1][r2][r3][r4][r5]
-                            - prArr[l1][r2][r3][r4][r5]
-                            - prArr[r1][l2][r3][r4][r5]
-                            - prArr[r1][r2][l3][r4][r5]
-                            - prArr[r1][r2][l3][l4][r5]
-                            - prArr[r1][r2][r3][r4][l5]
-                            + prArr[l1][l2][r3][r4][r5]
-                            + prArr[l1][r2][l3][r4][r5]
-                            + prArr[l1][r2][r3][l4][r5]
-                            + prArr[l1][r2][r3][r4][l5]
-                            + prArr[l1][r2][r3][l4][r5]
-                            + prArr[r1][l2][l3][r4][r5]
-                            + prArr[r1][l2][r3][l4][r5]
-                            + prArr[r1][l2][r3][r4][l5]
-                            + prArr[r1][r2][l3][l4][r5]
-                            + prArr[r1][r2][l3][r4][l5]
-                            - prArr[r1][r2][r3][l4][l5]
-                            - prArr[l1][l2][l3][r4][r5]
-                            - prArr[l1][l2][r3][l4][r5]
-                            - prArr[l1][l2][r3][r4][l5]
-                            - prArr[l1][r2][l3][l4][r5]
-                            - prArr[l1][r2][l3][r4][l5]
-                            + prArr[l1][r2][r3][l4][l5]
-                            + prArr[l1][l2][l3][l4][r5]
-                            + prArr[l1][l2][l3][r4][l5]
-                            + prArr[l1][l2][r3][l4][l5]
-                            + prArr[l1][r2][l3][l4][l5]
-                            + prArr[r1][l2][l3][l4][l5]
-                            - prArr[l1][l2][l3][l4][l5]
+                    sum
 
             ).append("\n");
 
+//            System.out.print("Str"+str+" ");
+//            https://codeforces.com/edu/course/3/lesson/10/3/practice/contest/324368/problem/B
+//            artiomN
+//                    =XbPe8*6P_:e#.k
         }
         System.out.println(str);
 
